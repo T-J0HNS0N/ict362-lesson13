@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learning Log</title>
+</head>
+<body>
+  <!-- Connects to app_name = 'learning_logs' and route names in learning_logs/urls.py -> learning_logs/views.py -->
+  <nav>
+    <a href="{% url 'learning_logs:index' %}">Torey Johnson's Learning Log</a> -
+    <a href="{% url 'learning_logs:topics' %}">Topics</a>
+  </nav>
+
+  <!-- Child templates (index.html, topics.html, topic.html) extend base.html and insert content here -->
+  <!--Works like cross refrences member accounts at work-->
+  {% block content %}{% endblock content %}
+</body>
+</html>

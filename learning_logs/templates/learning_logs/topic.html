@@ -1,0 +1,23 @@
+{% extends 'learning_logs/base.html' %}
+
+<!-- Renders inside the content block in base.html when views.topic renders 'learning_logs/topic.html' -->
+{% block content %}
+  <!-- Displays 'subject1' and 'subject2' context values passed from views.topic in learning_logs/views.py -->
+  <h2>Subject 1: {{ subject1 }}</h2>
+  <h3>Subject 2: {{ subject2 }}</h3>
+
+  <!-- Heading for entries belonging to this topic, ordered by '-date_added' in views.topic -->
+  <h4>Entries:</h4>
+  <ul>
+    <!-- Loops over 'entries' passed in context from views.topic in learning_logs/views.py -->
+    {% for entry in entries %}
+      <li>
+        <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+        <p>{{ entry.text|linebreaks }}</p>
+      </li>
+    {% empty %}
+      <!-- Shown when no entries exist yet for this topic -->
+      <li>There are no entries for this topic yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

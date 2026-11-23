@@ -1,0 +1,21 @@
+{% extends 'learning_logs/base.html' %}
+
+<!-- Renders inside the content block in base.html when views.topics renders 'learning_logs/topics.html' -->
+{% block content %}
+  <!-- Heading for the topics list passed as 'topics' context from views.topics in learning_logs/views.py -->
+  <h1>Topics</h1>
+
+  <ul>
+    <!-- Loops over Topic objects ordered by date_added; each topic has subject1 and subject2 fields -->
+    {% for topic in topics %}
+      <li>
+        <!-- Links to the single-topic route in learning_logs/urls.py -> views.topic -> topic.html -->
+        <a href="{% url 'learning_logs:topic' topic.id %}">
+          Subject 1: {{ topic.subject1 }} | Subject 2: {{ topic.subject2 }}
+        </a>
+      </li>
+    {% empty %}
+      <li>No topics have been added yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

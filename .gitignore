@@ -1,0 +1,6 @@
+11_env/
+venv/
+__pycache__/
+*.py[cod]
+*.splite3
+.DS_Store
